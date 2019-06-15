@@ -1,0 +1,4 @@
+/* Adjust margins body of html*/
+body, html {
+  margin: 0;
+}
