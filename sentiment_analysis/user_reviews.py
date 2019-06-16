@@ -4,7 +4,6 @@ import dash_html_components as html
 
 # PLOTLY IMPORTS
 import plotly.graph_objs as go
-import plotly.figure_factory as ff
 
 # IMPORT OTHERS
 import pandas as pd
@@ -70,6 +69,81 @@ sentiments = html.Div([
         ],style={'width':'60%','display':'inline-block'})
     ]),
     html.Div([
-
+        html.Div([
+            dcc.Graph(
+                figure={
+                    'data':[
+                        go.Histogram(
+                            x=df[df['Sentiment']=='Positive']['Sentiment_Polarity'],
+                            xbins={
+                                'start':-1,
+                                'end':1,
+                                'size':0.1
+                            },
+                            histnorm='probability',
+                            name='Positive',
+                            opacity=0.75
+                        ),
+                        go.Histogram(
+                            x=df[df['Sentiment']=='Negative']['Sentiment_Polarity'],
+                            xbins={
+                                'start':-1,
+                                'end':1,
+                                'size':0.1
+                            },
+                            histnorm='probability',
+                            name='Negative',
+                            opacity=0.75
+                        )
+                    ],
+                    'layout':go.Layout(
+                        title='Sentiment Polarity Distribuition',
+                        xaxis={'title':'Sentiment Polarity'},
+                        barmode='overlay',
+                        plot_bgcolor='#111',
+                        paper_bgcolor='#111',
+                        font={'color':'white','size':16}
+                    )
+                }
+            )
+        ],style={'display':'inline-block','width':'50%'}),
+        html.Div([
+            dcc.Graph(
+                figure={
+                    'data':[
+                        go.Histogram(
+                            x=df[df['Sentiment']=='Positive']['Sentiment_Subjectivity'],
+                            xbins={
+                                'start':0,
+                                'end':1,
+                                'size':0.1
+                            },
+                            histnorm='probability',
+                            name='Positive',
+                            opacity=0.75
+                        ),
+                        go.Histogram(
+                            x=df[df['Sentiment']=='Negative']['Sentiment_Subjectivity'],
+                            xbins={
+                                'start':0,
+                                'end':1,
+                                'size':0.1
+                            },
+                            histnorm='probability',
+                            name='Negative',
+                            opacity=0.75
+                        )
+                    ],
+                    'layout':go.Layout(
+                        title='Sentiment Subjectivity Distribuition',
+                        xaxis={'title':'Sentiment Subjectivity'},
+                        barmode='overlay',
+                        plot_bgcolor='#111',
+                        paper_bgcolor='#111',
+                        font={'color':'white','size':16}
+                    )
+                }
+            )
+        ],style={'display':'inline-block','width':'50%'})
     ])
 ])

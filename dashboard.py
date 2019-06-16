@@ -2,7 +2,9 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+
 from dash.dependencies import Input,Output
+
 
 # OTHER IMPORTS
 import pandas as pd
@@ -15,6 +17,13 @@ app = dash.Dash()
 app.layout = html.Div([
     dcc.Tabs(id='tabs',children=[
         dcc.Tab(label='Sentiments',value='sentiments',
+            selected_style={
+                'backgroundColor':'#111',
+                'color':'white',
+                'fontWeight':'bold',
+                'fontSize':20
+            }),
+        dcc.Tab(label='Reviews',value='reviews',
             selected_style={
                 'backgroundColor':'#111',
                 'color':'white',
