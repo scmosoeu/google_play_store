@@ -67,7 +67,7 @@ sentiments = html.Div([
                 }
             )
         ],style={'width':'60%','display':'inline-block'})
-    ]),
+    ],style={'borderStyle':'solid','borderColor':'#111'}),
     html.Div([
         html.Div([
             dcc.Graph(
@@ -145,5 +145,5 @@ sentiments = html.Div([
                 }
             )
         ],style={'display':'inline-block','width':'50%'})
-    ])
+    ],style={'borderStyle':'solid','borderColor':'#111'})
 ])
