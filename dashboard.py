@@ -2,17 +2,16 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-
 from dash.dependencies import Input,Output
 
-
-# OTHER IMPORTS
+# PYTHON IMPORTS
 import pandas as pd
 import numpy as np
 
+# OTHER IMPORTS
+from app import app
 from sentiment_analysis.user_reviews import sentiments
-
-app = dash.Dash()
+from sentiment_analysis import play_store_overview
 
 app.layout = html.Div([
     dcc.Tabs(id='tabs',children=[
@@ -23,7 +22,7 @@ app.layout = html.Div([
                 'fontWeight':'bold',
                 'fontSize':20
             }),
-        dcc.Tab(label='Reviews',value='reviews',
+        dcc.Tab(label='Overview',value='overview',
             selected_style={
                 'backgroundColor':'#111',
                 'color':'white',
@@ -41,6 +40,8 @@ def display_content(selected_tab):
 
     if selected_tab == 'sentiments':
         return sentiments
+    elif selected_tab == 'overview':
+        return play_store_overview.overview
 
 if __name__ == '__main__':
     app.run_server(debug=True)
