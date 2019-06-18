@@ -2,3 +2,10 @@
 body, html {
   margin: 0;
 }
+
+#tabs .tab-selected {
+  background-color: #111;
+  color: white;
+  font-weight: bold;
+  font-size: 20;
+}
